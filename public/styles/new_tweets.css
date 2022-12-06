@@ -30,6 +30,7 @@ textarea {
   outline: none;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: bold;
+  style ="r"
 }
 
 ::placeholder {
