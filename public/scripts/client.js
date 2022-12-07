@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
 // Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = {
+const tweetData = [{
   "user": {
     "name": "Newton",
     "avatars": "https://i.imgur.com/73hZDYK.png",
@@ -12,7 +12,7 @@ const tweetData = {
       "text": "If I have seen further it is by standing on the shoulders of giants"
     },
   "created_at": 1461116232227
-}
+}]
 
 const createTweetElement = function(object) {
   return $(`<article class="tweet">
@@ -40,12 +40,15 @@ const createTweetElement = function(object) {
 }
 
 
-const $tweet = createTweetElement(tweetData);
+// const $tweet = createTweetElement(tweetData);
 
-const renderTweet = function(tweet) {
-  $("#tweet-container").append(tweet);
+const renderTweets = function(tweets) {
+  for (let tweet of tweets) {
+    const $tweet = createTweetElement(tweet);
+    $("#tweet-container").append($tweet);
+  }
 }
 
-renderTweet($tweet);
+renderTweets(tweetData);
 
 });
