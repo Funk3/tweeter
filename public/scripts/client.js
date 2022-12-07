@@ -51,7 +51,6 @@ $(document).ready(function() {
 
   $("form").submit(function(event) {
     event.preventDefault()
-    console.log($(this).serialize($("textarea")))
     $.ajax({
       type: "POST",
       url: "/tweets/",
