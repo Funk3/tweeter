@@ -1,21 +1,21 @@
 // Load jquery to index
 $(document).ready(function() {
 
-// Test / driver code (temporary). Eventually will get this from the server.
-const tweetData = [{
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
+  // Test / driver code (temporary). Eventually will get this from the server.
+  const tweetData = [{
+    "user": {
+      "name": "Newton",
+      "avatars": "https://i.imgur.com/73hZDYK.png",
       "handle": "@SirIsaac"
     },
-  "content": {
+    "content": {
       "text": "If I have seen further it is by standing on the shoulders of giants"
     },
-  "created_at": 1461116232227
-}]
+    "created_at": 1461116232227
+  }];
 
-const createTweetElement = function(object) {
-  return $(`<article class="tweet">
+  const createTweetElement = function(object) {
+    return $(`<article class="tweet">
   <div class="head">
     <div class="left">
       <div class="icon"><img src=${object.user.avatars}></div>
@@ -36,19 +36,26 @@ const createTweetElement = function(object) {
       <i class="fa-solid fa-heart"></i>
     </div>
   </footer>
-</article>`)
-}
+</article>`);
+  };
 
+  const renderTweets = function(tweets) {
+    for (let tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $("#tweet-container").append($tweet);
+    }
+  };
 
-// const $tweet = createTweetElement(tweetData);
+  renderTweets(tweetData);
+  // SUBMIT
 
-const renderTweets = function(tweets) {
-  for (let tweet of tweets) {
-    const $tweet = createTweetElement(tweet);
-    $("#tweet-container").append($tweet);
-  }
-}
-
-renderTweets(tweetData);
-
+  $("form").submit(function(event) {
+    event.preventDefault()
+    console.log($(this).serialize($("textarea")))
+    $.ajax({
+      type: "POST",
+      url: "/tweets/",
+      data: $(this).serialize($("textarea")),
+    })
+  });
 });
