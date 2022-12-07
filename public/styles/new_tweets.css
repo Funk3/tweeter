@@ -1,4 +1,4 @@
-.container {
+#tweet-container {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -62,7 +62,17 @@ padding-left: .5em;
 padding-right: .5em;
 }
 
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .name {
+  padding-left: 10px;
+}
+
+.handle {
  color: lightsteelblue;
 }
 
@@ -105,4 +115,8 @@ i {
 
 article:hover {
   box-shadow:  6px 8px #888888;
+}
+
+.tweet {
+  margin-bottom: 2em;
 }

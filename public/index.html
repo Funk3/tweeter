@@ -46,7 +46,7 @@
   </header>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main id="tweet-container">
       <section class="new-tweet">
         <form action="/tweets/" method="POST">
           <textarea style="resize: none" name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
@@ -57,14 +57,14 @@
         </form>
       </section>
 
-      <article>
+      <article class="tweet">
         <div class="head">
           <div class="left">
-            <icon>(Y)</icon>
-            <name>name</name>
+            <div class="icon">:)</div>
+            <div class="name">name</div>
           </div>
           <div class="right">
-            <div class="name">@Dude</div>
+            <div class="handle"> @Dude </div>
           </div>
         </div>
         <content>My name is Hot Karl, and I've seen things</content>
