@@ -1,9 +1,6 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+// Load jquery to index
 $(document).ready(function() {
+
 // Test / driver code (temporary). Eventually will get this from the server.
 const tweetData = {
   "user": {
@@ -42,9 +39,13 @@ const createTweetElement = function(object) {
 </article>`)
 }
 
+
 const $tweet = createTweetElement(tweetData);
 
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
-$('#tweet-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+const renderTweet = function(tweet) {
+  $("#tweet-container").append(tweet);
+}
+
+renderTweet($tweet);
+
 });

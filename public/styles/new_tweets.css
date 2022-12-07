@@ -73,6 +73,7 @@ padding-right: .5em;
 }
 
 .handle {
+  align-self: center;
  color: lightsteelblue;
 }
 
