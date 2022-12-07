@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  flex-flow: column;
+  align-items: center;
   justify-content: stretch;
   padding-top: 1.5em;
 }
@@ -41,4 +43,66 @@ textarea {
   font-family:  "Bungee", cursive;
   display: flex;
   justify-content: space-between;
+}
+
+article {
+  display: flex;
+  width: 70%;
+  flex-flow: column nowrap;
+  border: 3px solid black;
+}
+
+.head {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding-top: .5em;
+padding-bottom: 1.2em;
+padding-left: .5em;
+padding-right: .5em;
+}
+
+.name {
+ color: lightsteelblue;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: .5em;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-bottom: .5em;
+}
+
+.datepost {
+  font-size: 15px;
+}
+
+content {
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-bottom: 1em;
+  margin-left: .5em;
+  margin-right: .5em;
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 3px solid rgb(30, 30, 30);
+}
+
+.bottomright {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+i {
+  color: #4056A1;
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+article:hover {
+  box-shadow:  6px 8px #888888;
 }
