@@ -1,5 +1,13 @@
 // Load jquery to index
 $(document).ready(function () {
+  $(".error").hide();
+
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = function (object) {
     return $(`<article class="tweet">
   <div class="head">
@@ -11,7 +19,8 @@ $(document).ready(function () {
       <div class="handle">${object.user.handle}</div>
     </div>
   </div>
-  <content>${object.content.text}</content>
+  <content>${escape(object.content.text)}
+  </content>
   <footer>
     <div class="datepost">
     <div class="timeago" datetime="2016-06-30 09:20:00"></div>
@@ -46,11 +55,15 @@ $(document).ready(function () {
     event.preventDefault();
     console.log($("textarea").val().length);
     if ($("textarea").val().length === 0) {
-      alert("You need to enter something to make a tweet");
+      $(".error-area").text(
+        "You need to enter something to make a tweet! Refresh and try again."
+      );
+      return $(".error").show("slow");
     } else if ($("textarea").val().length > 140) {
-      alert(
+      $(".error-area").text(
         "You have too many characters, please submit when it is 140 or less!"
       );
+      return $(".error").show("slow");
     } else {
       $.ajax({
         type: "POST",

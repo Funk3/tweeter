@@ -128,3 +128,16 @@ article:hover {
 .tweet {
   margin-bottom: 2em;
 }
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  width: 100%;
+  border: 6px solid red;
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
+  margin-bottom: 3em;
+  font-weight: bold;
+}
