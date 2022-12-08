@@ -29,7 +29,7 @@ $(document).ready(function () {
   const renderTweets = function (tweets) {
     for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $("#tweet-container").append($tweet);
+      $(".tweet-section").prepend($tweet);
     }
   };
 
@@ -58,6 +58,7 @@ $(document).ready(function () {
         data: $(this).serialize(),
       });
     }
+    location.reload(true);
   });
 
   loadTweets();
