@@ -1,20 +1,6 @@
 // Load jquery to index
-$(document).ready(function() {
-
-  // Test / driver code (temporary). Eventually will get this from the server.
-  const tweetData = [{
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  }];
-
-  const createTweetElement = function(object) {
+$(document).ready(function () {
+  const createTweetElement = function (object) {
     return $(`<article class="tweet">
   <div class="head">
     <div class="left">
@@ -28,7 +14,8 @@ $(document).ready(function() {
   <content>${object.content.text}</content>
   <footer>
     <div class="datepost">
-      ${object.created_at}
+    <div class="timeago" datetime="2016-06-30 09:20:00"></div>
+      ${timeago.format(object.created_at)}
     </div>
     <div class="bottomright">
       <i class="fa-solid fa-flag"></i>
@@ -39,22 +26,39 @@ $(document).ready(function() {
 </article>`);
   };
 
-  const renderTweets = function(tweets) {
+  const renderTweets = function (tweets) {
     for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $("#tweet-container").append($tweet);
     }
   };
 
-  renderTweets(tweetData);
-  // SUBMIT
-
-  $("form").submit(function(event) {
-    event.preventDefault()
+  const loadTweets = function () {
     $.ajax({
-      type: "POST",
-      url: "/tweets/",
-      data: $(this).serialize($("textarea")),
-    })
+      type: "GET",
+      url: "http://localhost:8080/tweets",
+      success: renderTweets,
+      dataType: "json",
+    });
+  };
+
+  $("form").submit(function (event) {
+    event.preventDefault();
+    console.log($("textarea").val().length);
+    if ($("textarea").val().length === 0) {
+      alert("You need to enter something to make a tweet");
+    } else if ($("textarea").val().length > 140) {
+      alert(
+        "You have too many characters, please submit when it is 140 or less!"
+      );
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/tweets/",
+        data: $(this).serialize(),
+      });
+    }
   });
+
+  loadTweets();
 });
