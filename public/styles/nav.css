@@ -1,3 +1,7 @@
+/*
+ * Original styling
+ */
+
 nav {
   display: flex;
   height: 120px;
@@ -33,6 +37,10 @@ span {
   color: red;
   font-size: 20px;
 }
+
+/*
+ * Mobile template styling
+ */
 
 @media (min-width: 320px) and (max-width: 767px) {
   nav {

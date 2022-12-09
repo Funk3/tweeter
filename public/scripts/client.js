@@ -2,6 +2,7 @@
 $(document).ready(function () {
   $(".error").hide();
 
+  // Insures tweets cannot inject code
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
@@ -9,32 +10,34 @@ $(document).ready(function () {
   };
 
   const createTweetElement = function (object) {
-    return $(`<article class="tweet">
-  <div class="head">
-    <div class="left">
-      <div class="icon"><img id="icon" src=${object.user.avatars}></div>
-      <div class="name">${object.user.name}</div>
-    </div>
-    <div class="right">
-      <div class="handle">${object.user.handle}</div>
-    </div>
-  </div>
-  <content>${escape(object.content.text)}
-  </content>
-  <footer>
-    <div class="datepost">
-    <div class="timeago" datetime="2016-06-30 09:20:00"></div>
-      ${timeago.format(object.created_at)}
-    </div>
-    <div class="bottomright">
-      <i class="fa-solid fa-flag"></i>
-      <i class="fa-solid fa-retweet"></i>
-      <i class="fa-solid fa-heart"></i>
-    </div>
-  </footer>
-</article>`);
+    return $(`
+    
+    <article class="tweet">
+      <div class="head">
+        <div class="left">
+          <div class="icon"><img id="icon" src=${object.user.avatars}></div>
+          <div class="name">${object.user.name}</div>
+        </div>
+        <div class="right">
+          <div class="handle">${object.user.handle}</div>
+        </div>
+      </div>
+      <content>${escape(object.content.text)}</content>
+      <footer>
+        <div class="datepost">
+          ${timeago.format(object.created_at)}
+        </div>
+        <div class="bottomright">
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-retweet"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </footer>
+    </article>
+    `);
   };
 
+  // loops through tweets and adds them on to page in descending order
   const renderTweets = function (tweets) {
     for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
@@ -51,9 +54,9 @@ $(document).ready(function () {
     });
   };
 
+  //posts tweets when submit clicked unless errors are made
   $("form").submit(function (event) {
     event.preventDefault();
-    console.log($("textarea").val().length);
     if ($("textarea").val().length === 0) {
       $(".error-area").text("Tweets can't be empty.");
       return $(".error").show("slow");

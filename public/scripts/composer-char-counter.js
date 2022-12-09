@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  console.log("works!");
+  // Changes counter to red or black on length of characters in input field
 
   $("#tweet-text").on("input", function () {
     let thisContent = $(this).val();
@@ -12,4 +12,3 @@ $(document).ready(function () {
     }
   });
 });
-

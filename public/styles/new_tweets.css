@@ -1,3 +1,7 @@
+/*
+ * Original styling
+ */
+
 #tweet-container {
   display: flex;
   flex-flow: column;
@@ -148,6 +152,10 @@ article:hover {
   color: lightseagreen;
 }
 
+/*
+ * Mobile template styling
+ */
+
 @media (min-width: 320px) and (max-width: 767px) {
   #tweet-container {
     display: flex;
@@ -217,6 +225,10 @@ article:hover {
     width: 100%;
   }
 }
+
+/*
+ * Desktop template styling
+ */
 
 @media (min-width: 1440px) {
   article.tweet {

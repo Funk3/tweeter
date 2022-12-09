@@ -1,3 +1,7 @@
+/*
+ * Original styling
+ */
+
 header {
   height: 630px;
   width: 100%;
@@ -17,6 +21,10 @@ h2 {
 strong {
   font-weight: bold;
 }
+
+/*
+ * Mobile template styling
+ */
 
 @media (min-width: 320px) and (max-width: 767px) {
   header {
@@ -43,6 +51,10 @@ strong {
     font-weight: bold;
   }
 }
+
+/*
+ * Desktop screen template styling
+ */
 
 @media (min-width: 1440px) {
   header {

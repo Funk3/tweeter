@@ -3,6 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
 html {
   box-sizing: border-box;
 }
@@ -13,26 +14,27 @@ html {
 }
 
 /*
- * Global layout stuff
+ * Global original template styling
  */
 
-@media (min-width: 320px) and (max-width: 767px) {
-  body {
-    font-family: "Source Sans Pro", sans-serif;
-    color: #545149;
-    background-color: #f4f1ec;
-    font-size: 24px;
-  }
+main {
+  margin-right: 5%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  background-color: #f4f1ec;
 }
 
-@media (min-width: 768px) and (max-width: 1339px) {
-  body {
-    font-family: "Source Sans Pro", sans-serif;
-    color: #545149;
-    background-color: #f4f1ec;
-    font-size: 24px;
-  }
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #545149;
+  background-color: #f4f1ec;
+  font-size: 24px;
 }
+
+/*
+ * Large screen template styling
+ */
 
 @media (min-width: 1440px) {
   body {
@@ -44,16 +46,4 @@ html {
     background-color: #f4f1ec;
     font-size: 24px;
   }
-}
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
-
-main {
-  margin-right: 5%;
-  margin-left: 5%;
-  display: flex;
-  justify-content: center;
-  background-color: #f4f1ec;
 }
