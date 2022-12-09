@@ -11,7 +11,6 @@ $(document).ready(function () {
 
   const createTweetElement = function (object) {
     return $(`
-    
     <article class="tweet">
       <div class="head">
         <div class="left">
