@@ -75,10 +75,6 @@ article {
   align-items: center;
 }
 
-.name {
-  padding-left: 10px;
-}
-
 .handle {
   align-self: center;
   color: lightsteelblue;
@@ -107,6 +103,10 @@ content {
   font-weight: bold;
   font-size: 18px;
   border-bottom: 3px solid rgb(30, 30, 30);
+}
+
+.name {
+  padding-left: 10px;
 }
 
 .bottomright {
@@ -140,4 +140,105 @@ article:hover {
   padding-top: 1.5em;
   margin-bottom: 3em;
   font-weight: bold;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  #tweet-container {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    align-self: flex-end;
+    padding-top: 1em;
+  }
+
+  article.tweet {
+    width: 100%;
+  }
+
+  #icon {
+    width: 50%;
+  }
+
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    width: 100%;
+    border: 0.5em solid red;
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+    margin-bottom: 3em;
+    font-weight: bold;
+  }
+
+  .name {
+    display: none;
+  }
+
+  .handle {
+    font-size: smaller;
+  }
+
+  #tweetbutton {
+    background-color: #4056a1;
+    color: #ffffff;
+    font-size: 50%;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-bottom: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 3px solid rgb(30, 30, 30);
+  }
+
+  form {
+    width: 100%;
+  }
+}
+
+/* @media (min-width: 768px) and (max-width: 1339px) {
+} */
+
+@media (min-width: 1440px) {
+  article.tweet {
+    width: 100%;
+  }
+
+  #tweet-container {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    align-self: flex-end;
+    margin-top: 6em;
+  }
+
+  .name {
+    padding-left: 10px;
+  }
+
+  form {
+    width: 100%;
+    padding-bottom: 1.5em;
+  }
+
+  textarea {
+    width: 100%;
+    height: 40%;
+  }
 }

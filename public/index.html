@@ -3,6 +3,7 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- External CSS -->
     <link
@@ -59,11 +60,11 @@
 
     <header>
       <div>
-        <img src="/images/profile-hex.png" />
+        <img id="headerimage" src="/images/profile-hex.png" />
       </div>
       <br />
       <div>
-        <h2><strong>Your</strong> Name</h2>
+        <h2><strong>User</strong> Bob</h2>
       </div>
     </header>
 
@@ -81,7 +82,7 @@
             placeholder="What are you humming about?"
           ></textarea>
           <div class="bottom">
-            <button type="submit">Tweet</button>
+            <button id="tweetbutton" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>

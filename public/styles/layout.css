@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -14,21 +16,44 @@ html {
  * Global layout stuff
  */
 
-body {
-  font-family: "Source Sans Pro", sans-serif;
-  color: #545149;
-  background-color: #f4f1ec;
-  font-size: 24px;
+@media (min-width: 320px) and (max-width: 767px) {
+  body {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #545149;
+    background-color: #f4f1ec;
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1339px) {
+  body {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #545149;
+    background-color: #f4f1ec;
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  body {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #545149;
+    background-color: #f4f1ec;
+    font-size: 24px;
+  }
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- main {
+main {
   margin-right: 5%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
   background-color: #f4f1ec;
- }
+}

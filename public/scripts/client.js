@@ -12,7 +12,7 @@ $(document).ready(function () {
     return $(`<article class="tweet">
   <div class="head">
     <div class="left">
-      <div class="icon"><img src=${object.user.avatars}></div>
+      <div class="icon"><img id="icon" src=${object.user.avatars}></div>
       <div class="name">${object.user.name}</div>
     </div>
     <div class="right">
@@ -55,14 +55,10 @@ $(document).ready(function () {
     event.preventDefault();
     console.log($("textarea").val().length);
     if ($("textarea").val().length === 0) {
-      $(".error-area").text(
-        "You need to enter something to make a tweet! Refresh and try again."
-      );
+      $(".error-area").text("Tweets can't be empty.");
       return $(".error").show("slow");
     } else if ($("textarea").val().length > 140) {
-      $(".error-area").text(
-        "You have too many characters, please submit when it is 140 or less!"
-      );
+      $(".error-area").text("Can't post over 140 characters.");
       return $(".error").show("slow");
     } else {
       $.ajax({
