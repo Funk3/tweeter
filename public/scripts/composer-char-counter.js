@@ -7,7 +7,7 @@ $(document).ready(function () {
     if (thisContent.length > 140) {
       $(".counter").css("color", "red");
     }
-    if (thisContent.length < 140) {
+    if (thisContent.length <= 140) {
       $(".counter").css("color", "black");
     }
   });
