@@ -55,7 +55,7 @@ $(document).ready(function () {
   const loadTweets = function () {
     $.ajax({
       type: "GET",
-      url: "http://localhost:8080/tweets",
+      url: "/tweets",
       success: renderTweets,
       dataType: "json",
     });
