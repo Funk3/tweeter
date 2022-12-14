@@ -61,10 +61,6 @@ $(document).ready(function () {
     });
   };
 
-  const clearForm = () => {
-    $("#tweet-text")[0].reset();
-  };
-
   //posts tweets when submit clicked unless errors are made
   $("form").submit(function (event) {
     event.preventDefault();
@@ -81,6 +77,7 @@ $(document).ready(function () {
         data: $(this).serialize(),
       });
     }
+    $("#tweetform")[0].reset();
   });
   loadTweets();
 });
