@@ -36,14 +36,22 @@ $(document).ready(function () {
     `);
   };
 
+  //reload tweet display
+  const reLoad = () => {
+    $(".tweets").load(loadTweets());
+  };
+
   // loops through tweets and adds them on to page in descending order
+  // reloads tweet section with new tweets
   const renderTweets = function (tweets) {
     for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $(".tweet-section").prepend($tweet);
     }
+    reLoad();
   };
 
+  // GETS tweet data via ajax request and performs tweet rendering upon success
   const loadTweets = function () {
     $.ajax({
       type: "GET",
@@ -51,6 +59,10 @@ $(document).ready(function () {
       success: renderTweets,
       dataType: "json",
     });
+  };
+
+  const clearForm = () => {
+    $("#tweet-text")[0].reset();
   };
 
   //posts tweets when submit clicked unless errors are made
@@ -69,8 +81,6 @@ $(document).ready(function () {
         data: $(this).serialize(),
       });
     }
-    location.reload(true);
   });
-
   loadTweets();
 });
