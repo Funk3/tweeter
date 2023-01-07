@@ -77,6 +77,5 @@ $(document).ready(function () {
     }).then(loadTweets);
 
     $('#tweetform')[0].reset();
-    loadTweets();
   });
 });
