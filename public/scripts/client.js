@@ -55,10 +55,11 @@ $(document).ready(function () {
     });
   };
 
-  //posts tweets when submit clicked unless errors are made
-  //when tweet is submitted ajax posts and upon success loads tweets into page
+  //loads tweets already on server
   loadTweets();
 
+  //posts tweets when submit clicked unless errors are made
+  //when tweet is submitted ajax posts and upon success loads tweets into page
   $('#tweetform').submit(function (event) {
     event.preventDefault();
     if ($('textarea').val().length === 0) {
