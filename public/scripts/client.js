@@ -55,35 +55,27 @@ $(document).ready(function () {
     });
   };
 
-  const loadInitialTweets = function () {
-    $.ajax({
-      type: 'GET',
-      url: '/tweets',
-      success: renderTweets,
-      dataType: 'json',
-    });
-  };
-
   //posts tweets when submit clicked unless errors are made
   //when tweet is submitted ajax posts and upon success loads tweets into page
-  loadInitialTweets();
+  loadTweets();
 
   $('#tweetform').submit(function (event) {
     event.preventDefault();
     if ($('textarea').val().length === 0) {
       $('.error-area').text("Tweets can't be empty.");
       return $('.error').show('slow');
-    } else if ($('textarea').val().length > 140) {
+    }
+    if ($('textarea').val().length > 140) {
       $('.error-area').text("Can't post over 140 characters.");
       return $('.error').show('slow');
-    } else {
-      $.ajax({
-        method: 'POST',
-        url: '/tweets/',
-        data: $(this).serialize(),
-        success: loadTweets(),
-      });
     }
+
+    $.ajax({
+      method: 'POST',
+      url: '/tweets/',
+      data: $(this).serialize(),
+    }).then(loadTweets);
+
     $('#tweetform')[0].reset();
     loadTweets();
   });
