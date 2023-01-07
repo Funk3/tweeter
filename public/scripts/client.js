@@ -1,10 +1,10 @@
 // Load jquery to index
 $(document).ready(function () {
-  $(".error").hide();
+  $('.error').hide();
 
   // Insures tweets cannot inject code
   const escape = function (str) {
-    let div = document.createElement("div");
+    let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
@@ -38,43 +38,53 @@ $(document).ready(function () {
 
   // loops through tweets and adds them on to page in descending order
   const renderTweets = function (tweets) {
+    $('.tweet-section').empty();
     for (let tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $(".tweet-section").prepend($tweet);
+      $('.tweet-section').prepend($tweet);
     }
   };
 
   // GETS tweet data via ajax request and performs tweet rendering upon success
   const loadTweets = function () {
+    return $.ajax({
+      method: 'GET',
+      url: 'http://localhost:8080/tweets',
+    }).then((response) => {
+      renderTweets(response);
+    });
+  };
+
+  const loadInitialTweets = function () {
     $.ajax({
-      type: "GET",
-      url: "/tweets",
+      type: 'GET',
+      url: '/tweets',
       success: renderTweets,
-      dataType: "json",
+      dataType: 'json',
     });
   };
 
   //posts tweets when submit clicked unless errors are made
   //when tweet is submitted ajax posts and upon success loads tweets into page
+  loadInitialTweets();
 
-  $("form").submit(function (event) {
+  $('#tweetform').submit(function (event) {
     event.preventDefault();
-    if ($("textarea").val().length === 0) {
-      $(".error-area").text("Tweets can't be empty.");
-      return $(".error").show("slow");
-    } else if ($("textarea").val().length > 140) {
-      $(".error-area").text("Can't post over 140 characters.");
-      return $(".error").show("slow");
+    if ($('textarea').val().length === 0) {
+      $('.error-area').text("Tweets can't be empty.");
+      return $('.error').show('slow');
+    } else if ($('textarea').val().length > 140) {
+      $('.error-area').text("Can't post over 140 characters.");
+      return $('.error').show('slow');
     } else {
       $.ajax({
-        type: "POST",
-        url: "/tweets/",
+        method: 'POST',
+        url: '/tweets/',
         data: $(this).serialize(),
         success: loadTweets(),
       });
     }
-    $("#tweetform")[0].reset();
+    $('#tweetform')[0].reset();
+    loadTweets();
   });
-  //load initial tweets
-  loadTweets();
 });
